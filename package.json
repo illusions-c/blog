@@ -1,0 +1,18 @@
+{
+  "name": "cmsu",
+  "version": "1.0.0",
+  "description": "'node cms'",
+  "main": "''",
+  "keywords": [
+    "'cms",
+    "nodejs",
+    "node'"
+  ],
+  "author": "Yu",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "lodash": "^4.11.1",
+    "mongodb": "^2.1.16"
+  }
+}
