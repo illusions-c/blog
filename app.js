@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('port', port)
 
 /*
-	demo router
+	router
 */
 app.use('*', (req, res)=>{
 	res.end('welcome!')
