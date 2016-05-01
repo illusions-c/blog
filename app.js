@@ -6,26 +6,38 @@
 /*
 	requirements....
 */
-const http = require('http');
-const express = require('express');
-const path = require('path');
-const util = require('util');
+let http = require('http');
+let express = require('express');
+let path = require('path');
+let util = require('util');
+let bodyParser = require('body-parser');
 
-const port = 3000;
+let port = 4000;
 
 let app = express();
 let server = http.createServer(app);
+let routers = require(path.join(__dirname, 'routers'))
+let authorize = require(path.join(__dirname, 'modules', 'authorize'))
 
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
-app.set('port', port)
+app.set('port', port);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(authorize.sessionStore())
+app.use(authorize.checkSession)
+
+
 
 /*
 	router
 */
-app.use('*', (req, res)=>{
-	res.end('welcome!')
-});
+app.use('/', routers);
+app.use('/sign-out', authorize.destroySession)
+app.use((req, res)=>
+	res.render('error')
+);
 
 server.listen(port, ()=>{
 	util.log('Server start on port: ', port);

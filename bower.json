@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "description": "''",
+  "main": "''",
+  "authors": [
+    "Yu"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "''"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
