@@ -34,7 +34,7 @@
       return conn.query(pInsertData, function(err, rows, fields) {
         if (err) {
           util.log('err: ', err);
-          reject.call(this);
+          reject.call(this, '500');
         }
         util.log('sign up success: ', rows);
         return resolve.call(this);
@@ -50,7 +50,7 @@
         var passwordRight;
         if (err) {
           util.log('err: ', err);
-          reject.call(this, err);
+          reject.call(this, '500');
         }
         util.log('okok', rows);
         if (rows.length === 1) {
