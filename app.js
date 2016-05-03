@@ -19,10 +19,11 @@ let server = http.createServer(app);
 let routers = require(path.join(__dirname, 'routers'))
 let authorize = require(path.join(__dirname, 'modules', 'authorize'))
 
+
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
 app.set('port', port);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(authorize.sessionStore())
@@ -34,10 +35,9 @@ app.use(authorize.checkSession)
 	router
 */
 app.use('/', routers);
-app.use('/sign-out', authorize.destroySession)
-app.use((req, res)=>
-	res.render('error')
-);
+// app.use((req, res)=>
+// 	res.render('error')
+// );
 
 server.listen(port, ()=>{
 	util.log('Server start on port: ', port);

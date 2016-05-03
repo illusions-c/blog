@@ -1,12 +1,14 @@
 (function() {
   'use strict';
-  var db, express, router, util;
+  var authorize, db, express, router, util;
 
   express = require('express');
 
   util = require('util');
 
   db = require('../modules/db');
+
+  authorize = require('../modules/authorize');
 
   router = express.Router();
 
@@ -43,6 +45,8 @@
       return res.redirect('/sign-up');
     });
   });
+
+  router.get('/sign-out', authorize.destroySession);
 
   module.exports = router;
 
