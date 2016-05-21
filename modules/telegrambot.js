@@ -4,7 +4,7 @@
 
   telegramBot = require('node-telegram-bot-api');
 
-  token = '198440149:AAGOddwIsWPX4sXkVnZmDAWhygMXKp5_Xe4';
+  token = '';
 
   bot = new telegramBot(token, {
     polling: true

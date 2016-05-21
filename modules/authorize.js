@@ -15,7 +15,7 @@
   redisClient = redis.createClient(6379, 'localhost');
 
   redisClient.on('ready', function() {
-    return util.log('redis ready!');
+    return util.log('redis is ready!');
   });
 
   redisOptions = {
