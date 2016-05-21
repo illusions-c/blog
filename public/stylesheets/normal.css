@@ -1,0 +1,5 @@
+button, input[type=button], input[type=submit] {
+  outline: none !important; }
+
+body {
+  background-color: #fff; }

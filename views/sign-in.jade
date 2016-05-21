@@ -3,16 +3,23 @@ html
 	head
 		include partials/head
 	body
-		.container
+		.container-fluid
+			.row
+				.col-xs-6.col-xs-offset-3.jumbotron
+					//- img.img-responsive(src='/images/sign_in_top.jpg')
 			.row
 				.col-xs-4.col-xs-offset-4
-					h1 Sign In
-					form(method='post', action='/sign_in')
-						.form-group
-							label.control-label Username: Or Email:
-							input.form-control(type='text', name='name', required)
-							label.control-label Password:
-							input.form-control(type='password', name='password', required)
-
-							a.btn.btn-default.pull-left(href='/sign-up') Sign Up
-							input.btn.btn-primary.pull-right(type='submit', value='Submit')
+					form.form-horizontal(method='post', action='/sign_in')
+						fieldset
+							legend Sign In
+							.form-group
+								label.control-label.col-md-2 Username:
+								.col-md-10
+									input.form-control(type='text', name='name', required)
+							.form-group
+								label.control-label.col-md-2 Password:
+								.col-md-10
+									input.form-control(type='password', name='password', required)
+							.form-group
+								a.btn.btn-default.pull-left(href='/sign-up') Sign Up
+								input.btn.btn-primary.pull-right(type='submit', value='Submit')
