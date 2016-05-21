@@ -1,0 +1,18 @@
+nav {}
+
+
+.main-container {
+
+	.left {
+		background-color: #f3f3f3;
+		.articles {
+			.content {
+				p {
+					word-break: break-all;
+				}
+			}
+		}
+	}
+}
+
+	

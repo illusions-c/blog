@@ -2,10 +2,21 @@ doctype html
 html
 	head
 		include partials/head
+
+		link(rel='stylesheet', href='/stylesheets/index.css')
 	body
 		nav.navbar.navbar-top
-			a.btn.btn-sm.pull-right(href='/sign-out') Sign Out
-		.container
+			.container
+				.col-md-10.col-md-offset-1
+					a.btn.btn-sm.btn-raised.pull-right.fa.fa-sign-out(href='/sign-out')
+		.container.main-container
 			.row
-				.col-xs-4.col-xs-offset-4
-					h1 hello
+				.col-md-8.col-md-offset-2
+					.col-xs-9.left
+						div.articles
+							h3 Title
+							span 2016.05.01
+							div.content
+								p qwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwerqwer
+					.col-xs-3.right
+						.head

@@ -1,0 +1,4 @@
+.main-container .left {
+  background-color: #f3f3f3; }
+  .main-container .left .articles .content p {
+    word-break: break-all; }
