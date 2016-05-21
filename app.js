@@ -18,7 +18,7 @@ let app = express();
 let server = http.createServer(app);
 let routers = require(path.join(__dirname, 'routers'))
 let authorize = require(path.join(__dirname, 'modules', 'authorize'))
-
+let bot = require(path.join(__dirname, 'modules', 'telegrambot'))
 
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, 'views'));
@@ -38,6 +38,7 @@ app.use('/', routers);
 // app.use((req, res)=>
 // 	res.render('error')
 // );
+
 
 server.listen(port, ()=>{
 	util.log('Server start on port: ', port);

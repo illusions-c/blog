@@ -13,7 +13,7 @@
   config = {
     host: 'localhost',
     user: 'root',
-    password: '',
+    password: '1234',
     database: 'blog',
     useTransaction: {
       connectionLimit: 1
@@ -29,7 +29,7 @@
   signUp = function(uid, email, password) {
     var jiamipassword, pInsertData;
     jiamipassword = encrypt.add(password);
-    pInsertData = 'insert into users(uid, email, password) values("' + uid + '", "' + email + '", "' + jiamipassword + '")';
+    pInsertData = "insert into users(uid, email, password) values('" + uid + "', '" + email + "', '" + jiamipassword + "')";
     return new promise(function(resolve, reject) {
       return conn.query(pInsertData, function(err, rows, fields) {
         if (err) {
@@ -44,7 +44,7 @@
 
   signIn = function(name, password) {
     var pFindUser;
-    pFindUser = 'select * from users where uid = "' + name + '" or email = "' + name + '"';
+    pFindUser = "select * from users where uid = '" + name + "' or email = '" + name + "'";
     return new promise(function(resolve, reject) {
       return conn.query(pFindUser, function(err, rows, fields) {
         var passwordRight;
@@ -52,9 +52,7 @@
           util.log('err: ', err);
           reject.call(this, '500');
         }
-        util.log('okok', rows);
         if (rows.length === 1) {
-          util.log('input: ', password, 'remain: ', rows[0].password);
           passwordRight = encrypt.check(password, rows[0].password);
           util.log('sign in success: ', rows);
           return resolve.call(this);
