@@ -6,7 +6,7 @@
 
   util = require('util');
 
-  db = require('../modules/db');
+  db = require('../modules/mongodb');
 
   authorize = require('../modules/authorize');
 
@@ -23,7 +23,7 @@
   router.post('/sign_in', function(req, res) {
     return db.signIn(req.body.name, req.body.password).then(function() {
       req.session.uid = req.body.name;
-      util.log('somebody sign in!');
+      util.log(req.body.name + ' sign in!');
       return res.redirect('/');
     }, function(err) {
       util.log('sign in fail: ', err);
@@ -36,8 +36,9 @@
   });
 
   router.post('/sign_up', function(req, res) {
+    util.log('somebody sign up: ', req.body);
     return db.signUp(req.body.uid, req.body.email, req.body.password).then(function() {
-      util.log('somebody sign up!');
+      util.log(req.body.uid + ' sign up!');
       req.session.uid = req.body.uid;
       return res.redirect('/');
     }, function(err) {

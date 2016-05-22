@@ -35,11 +35,16 @@ app.use(authorize.checkSession)
 	router
 */
 app.use('/', routers);
-// app.use((req, res)=>
-// 	res.render('error')
-// );
+app.use((req, res)=>
+	res.redirect('/')
+);
 
 
 server.listen(port, ()=>{
 	util.log('Server start on port: ', port);
+});
+
+
+process.on('uncaughtException', (err)=>{
+	util.log(err)
 });

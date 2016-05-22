@@ -2,7 +2,7 @@
 
 express = require 'express'
 util = require 'util'
-db = require '../modules/db'
+db = require '../modules/mongodb'
 authorize = require '../modules/authorize'
 
 router = express.Router()
@@ -18,7 +18,7 @@ router.post '/sign_in', (req, res)->
 	db.signIn req.body.name, req.body.password
 	.then ->
 		req.session.uid = req.body.name
-		util.log 'somebody sign in!'
+		util.log req.body.name + ' sign in!'
 		res.redirect '/'
 	, (err)->
 		util.log 'sign in fail: ', err
@@ -28,9 +28,10 @@ router.post '/sign_in', (req, res)->
 router.get '/sign-up', (req, res)->
 	res.render 'sign-up'
 router.post '/sign_up', (req, res)->
+	util.log 'somebody sign up: ', req.body
 	db.signUp req.body.uid, req.body.email, req.body.password
 	.then ->
-		util.log 'somebody sign up!'
+		util.log req.body.uid + ' sign up!'
 		req.session.uid = req.body.uid
 		res.redirect '/'
 	, (err)->
